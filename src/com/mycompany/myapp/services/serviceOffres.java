@@ -115,4 +115,28 @@ public class serviceOffres {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return offres;
     }
+       
+       
+   public boolean addDestination(Offres offre) {
+        String url = Statics.BASE_URL + "offres/addOffres_mobile?nom="+ offre.getNom()+"&description=" + offre.getDescription()+"&prix="+offre.getPrix()+"&ville="+offre.getVille()+"&categ="+offre.getCateg();
+        req.setUrl(url);
+        req.setPost(false);
+
+       req.addArgument("nom", offre.getNom());
+       req.addArgument("description", offre.getDescription());
+       req.addArgument("prix", String.valueOf(offre.getPrix()));
+       req.addArgument("ville", offre.getVille());
+       req.addArgument("categ", offre.getCateg());
+  
+       req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                System.out.println(new String(req.getResponseData()));
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+   }
 }

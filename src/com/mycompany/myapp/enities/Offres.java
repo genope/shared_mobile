@@ -17,7 +17,7 @@ public class Offres {
     public Offres() {
     }
 
-    public Offres(int id_user, String nom, String description, String ville, String type, String categ, float prixn,String img) {
+    public Offres(int id_user, String nom, String description, String ville, String type, String categ, float prix) {
         this.id_user = id_user;
         this.nom = nom;
         this.description = description;
@@ -25,7 +25,14 @@ public class Offres {
         this.type = type;
         this.categ = categ;
         this.prix = prix;
-        this.image=img;
+    }
+
+    public Offres(String nom, String description, String ville, String categ, float prix) {
+        this.nom = nom;
+        this.description = description;
+        this.ville = ville;
+        this.categ = categ;
+        this.prix = prix;
     }
 
     public String getImage() {
