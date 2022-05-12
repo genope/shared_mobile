@@ -59,37 +59,37 @@ public class MyApplication {
     }
     
     public void start() {
-        //            new ProduitsListe().show();
-        if(current != null){
-            current.show();
-            return;
-        }
-        Form hi = new Form("Bienvenue chez shared");
-        hi.setUIID("HOMEPAGE");
-        hi.getToolbar().addCommandToSideMenu("Liste des offres", null, e->{
-            try {
-                new GetOffres().show();
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-
-        });
-        hi.getToolbar().addCommandToSideMenu("Liste des produits", null, e->{
-            try {
-                new ProduitsListe().show();
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());           }
-        });
-        hi.getToolbar().addCommandToSideMenu("Ajouter Produit", null, e->{
-
-            try {
-                new ProduitAjout().show();
-                
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
-        });
-        hi.show();
+                    new homeShared().show();
+//        if(current != null){
+//            current.show();
+//            return;
+//        }
+//        Form hi = new Form("Bienvenue chez shared");
+//        hi.setUIID("HOMEPAGE");
+//        hi.getToolbar().addCommandToSideMenu("Liste des offres", null, e->{
+//            try {
+//                new GetOffres().show();
+//            } catch (IOException ex) {
+//                System.out.println(ex.getMessage());
+//            }
+//
+//        });
+//        hi.getToolbar().addCommandToSideMenu("Liste des produits", null, e->{
+//            try {
+//                new ProduitsListe().show();
+//            } catch (IOException ex) {
+//                System.out.println(ex.getMessage());           }
+//        });
+//        hi.getToolbar().addCommandToSideMenu("Ajouter Produit", null, e->{
+//
+//            try {
+//                new ProduitAjout().show();
+//                
+//            } catch (IOException ex) {
+//                System.out.println(ex.getMessage());
+//            }
+//        });
+//        hi.show();
     
     }
 
