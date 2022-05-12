@@ -121,6 +121,7 @@ public class ServiceUtilisateur {
                SessionManager.setPassowrd(user.get("password").toString());
                 SessionManager.setUserName(user.get("username").toString());
                 SessionManager.setEmail(user.get("email").toString());
+                System.out.println("current user"+SessionManager.getEmail()+","+SessionManager.getPassowrd());
           
                 if(user.size() >0 ) // l9a user
                     new ProfileForm(rs).show();
