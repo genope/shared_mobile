@@ -10,6 +10,8 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.messaging.Message;
+import com.codename1.ui.Display;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.enities.Produits;
 import com.mycompany.myapp.utils.Statics;
@@ -109,10 +111,12 @@ public class ProduitService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return produits;
     }
+      
+        
+        
        public boolean addProd(Produits produit) {
-       System.out.println(produit.getRefProd());
-        System.out.println(produit.getDesignation());   
-        String url = Statics.BASE_URL + "produit/MobileNewProd?refProd="+ produit.getRefProd()+"&designation=" + produit.getDesignation()+"&prix="+produit.getPrix()+"&Qte"+produit.getQteStock();
+       System.out.println(produit.getImage());
+        String url = Statics.BASE_URL + "produit/mobprod?refProd="+ produit.getRefProd()+"&designation=" + produit.getDesignation()+"&prix="+produit.getPrix()+"&Qte="+produit.getQteStock();
         req.setUrl(url);
         req.setPost(false);
 
@@ -132,4 +136,5 @@ public class ProduitService {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
    }
+       
 }

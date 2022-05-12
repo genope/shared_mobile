@@ -7,23 +7,30 @@ package com.mycompany.myapp.gui;
 
 import com.codename1.capture.Capture;
 import com.codename1.components.ImageViewer;
+import com.codename1.components.InfiniteProgress;
 import com.codename1.components.SpanButton;
 import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.Log;
+import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkManager;
+import com.codename1.l10n.SimpleDateFormat;
+import com.codename1.notifications.LocalNotification;
 import com.codename1.ui.Button;
+import com.codename1.ui.ButtonGroup;
 import static com.codename1.ui.CN.SOUTH;
 import static com.codename1.ui.CN.openGallery;
 import static com.codename1.ui.CN1Constants.GALLERY_IMAGE;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.RadioButton;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextComponent;
 import com.codename1.ui.URLImage;
@@ -32,13 +39,44 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.util.Resources;
+import com.codename1.util.Callback;
 import com.mycompany.myapp.enities.Produits;
 import com.mycompany.myapp.services.ProduitService;
 import com.mycompany.myapp.utils.Statics;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.Map;
+
+import com.codename1.components.FloatingHint;
+import com.codename1.components.InfiniteProgress;
+import com.codename1.components.SpanLabel;
+import com.codename1.ui.Button;
+import com.codename1.ui.Command;
+import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
+import com.codename1.ui.Form;
+import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
+import com.codename1.ui.Toolbar;
+import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;import com.sun.mail.smtp.SMTPTransport;
+//import java.nio.file.CopyOption;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
+//import java.nio.file.StandardCopyOption;
+import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 /**
  *
@@ -46,13 +84,85 @@ import java.util.Map;
  */
 public class ProduitAjout extends Form {
            private Resources theme;
-                private EncodedImage enc;
-
+         private EncodedImage enc;
+         private String file;
+//         private void addimage(String name, String pathFrom) {
+//
+//        Path to1 = null;
+//        String m = null;
+//        String path = "C:\\xampp\\htdocs\\uploads\\images";
+//        JFileChooser chooser = new JFileChooser();
+//
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+//                "JPG & PNG Images", "jpg", "jpeg", "PNG");
+//        chooser.setFileFilter(filter);
+//        int returnVal = chooser.showOpenDialog(null);
+//        if (returnVal == JFileChooser.APPROVE_OPTION) {
+//            m = chooser.getSelectedFile().getAbsolutePath();
+//
+//            file = chooser.getSelectedFile();
+//            String fileName = file.getName();
+//
+//            if (chooser.getSelectedFile() != null) {
+//
+//                Path from = Paths.get(chooser.getSelectedFile().toURI());
+//                to1 = Paths.get(path + "\\" + fileName);
+//                //           to2 = Paths.get("src\\"+path+"\\"+file.getName()+".png");
+//                CopyOption[] options = new CopyOption[]{
+//                    StandardCopyOption.REPLACE_EXISTING,
+//                    StandardCopyOption.COPY_ATTRIBUTES
+//                };
+//                Files.copy(from, to1, options);
+//                System.out.println("added");
+//                System.out.println(file);
+//            }
+//
+//        }
+//    }
+         public void sendMail(String str) {
+        try {
+            
+            Properties props = new Properties();
+                props.put("mail.transport.protocol", "smtp"); //SMTP protocol
+		props.put("mail.smtps.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtps.auth", "true"); //enable authentication
+             
+            Session session = Session.getInstance(props,null); 
+            
+            
+            MimeMessage msg = new MimeMessage(session);
+            
+            msg.setRecipients(Message.RecipientType.TO,"TNSharedInc@gmail.com");
+            msg.setSubject("Application nom  : Confirmation du ");
+            msg.setSentDate(new Date(System.currentTimeMillis()));
+            
+           String txt = "Produit "+str +" Ajouté";
+           
+           
+           msg.setText(txt);
+           
+          SMTPTransport  st = (SMTPTransport)session.getTransport("smtps") ;
+            
+          st.connect("smtp.gmail.com",465,"TNSharedInc@gmail.com","shared2022");
+           
+          st.sendMessage(msg, msg.getAllRecipients());
+            
+          System.out.println("server response : "+st.getLastServerResponse());
+          
+        }catch(Exception e ) {
+            e.printStackTrace();
+        }
+    }
     public ProduitAjout() throws IOException {
         
             
         setTitle("Ajouter Produit");
+        setUIID("Ajout");
         setScrollableY(true);
+        getToolbar().addCommandToSideMenu("Accueil",enc,
+                e->{
+                    new homeShared().show();
+        });
         getToolbar().addCommandToSideMenu("Liste des offres",enc,
                 e->{
            try {
@@ -60,14 +170,31 @@ public class ProduitAjout extends Form {
            } catch (IOException ex) {
                System.out.println(ex.getMessage());           }
         });
-        getToolbar().addCommandToRightBar("back", null, ev->{
-            new homeShared(this).show();
+        getToolbar().addCommandToSideMenu("Liste des produits",enc,
+                e->{
+           try {
+               new ProduitsListe().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
         });
-     //   getToolbar().addCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, e->previous.showBack());
-        //Button addDestination = new Button("Add Destination");
+        
+        getToolbar().addCommandToRightBar("back", null, ev->{
+            new homeShared().show();
+        });
+        LocalNotification n = new LocalNotification();
+        n.setId("demo-notification");
+        n.setAlertBody("It's time to take a break and look at me");
+        n.setAlertTitle("Break Time!");
+        n.setAlertSound("/notification_sound_bells.mp3"); //file name must begin with notification_sound
 
-        //add(addDestination);
-        //addDestination.addActionListener(e-> new AddDestinationForm(this).show()); 
+
+        Display.getInstance().scheduleLocalNotification(
+                n,
+                System.currentTimeMillis() + 3 * 1000, // fire date/time
+                LocalNotification.REPEAT_MINUTE  // Whether to repeat and what frequency
+        );
+      
+        
         Container FormAjout =new Container(BoxLayout.yCenter());
         TextComponent refProd = new TextComponent().labelAndHint("refProd");
         FontImage.setMaterialIcon(refProd.getField().getHintLabel(), FontImage.MATERIAL_PERSON);
@@ -86,7 +213,52 @@ public class ProduitAjout extends Form {
 //            ToastBar.showMessage("Save pressed...", FontImage.MATERIAL_INFO);
 //            
 //        });
-        save.addActionListener(new ActionListener() {
+ 
+        Button avatar = new Button("");
+        avatar.setUIID("InputAvatar");
+        Image defaultAvatar = FontImage.createMaterial(FontImage.MATERIAL_CAMERA, "InputAvatarImage", 8);
+        
+        Image circleMaskImage =EncodedImage.create("/FileChooser.png");
+        defaultAvatar = defaultAvatar.scaled(circleMaskImage.getWidth(), circleMaskImage.getHeight());
+        defaultAvatar = ((FontImage)defaultAvatar).toEncodedImage();
+        Object circleMask = circleMaskImage.createMask();
+        defaultAvatar = defaultAvatar.applyMask(circleMask);
+        avatar.setIcon(defaultAvatar);
+        
+        
+        Button upload = new Button("Upload Image Produit");
+        upload.setUIID("fileC");
+        
+        upload.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+  
+        String picture = Capture.capturePhoto(1024, -1);
+        if(picture!=null){
+        String filestack = "https://www.filestackapi.com/api/store/S3?key=MY_KEY&filename=myPicture.jpg";
+        MultipartRequest request = new MultipartRequest() {
+           protected void readResponse(InputStream input) throws IOException  {
+              JSONParser jp = new JSONParser();
+              Map<String, Object> result = jp.parseJSON(new InputStreamReader(input, "UTF-8"));
+              String url = (String)result.get("url");
+               System.out.println(picture);
+          
+           }
+        };
+        request.setUrl(filestack);
+        try {
+            request.addData("fileUpload", picture, "image/jpeg");
+            request.setFilename("fileUpload", "myPicture.jpg");
+            NetworkManager.getInstance().addToQueue(request);
+        } catch(IOException err) {
+            err.printStackTrace();
+        }
+    }
+                                        
+            }
+        });
+        
+              save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 if(((refProd.getText().length()==0)||(designation.getText().length()==0)||(prix.getText().length()==0)||(qteStock.getText().length()==0)))
@@ -97,6 +269,7 @@ public class ProduitAjout extends Form {
                     
                         if( ProduitService.getInstance().addProd(prod))
                         {
+                            sendMail(refProd.getText());
                            Dialog.show("Success","Offre Ajouté","OK","");
                         try {
                             new GetOffres().show();
@@ -110,54 +283,19 @@ public class ProduitAjout extends Form {
                 }
             }
         });
+              
+        Button Share=new Button("Share");
+        ButtonGroup barGroup = new ButtonGroup();
 
+        RadioButton liste = RadioButton.createToggle("Partager", barGroup);
+        liste.setUIID("Button");
+        liste.addPointerPressedListener(l->{
+        Display.getInstance().execute("https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=http%3A%2F%2F127.0.0.1%3A8000%2Fequipe_mobile&display=popup&ref=plugin&src=share_button");
         
-        Button avatar = new Button("");
-        avatar.setUIID("InputAvatar");
-        Image defaultAvatar = FontImage.createMaterial(FontImage.MATERIAL_CAMERA, "InputAvatarImage", 8);
-        
-        Image circleMaskImage =EncodedImage.create("/FileChooser.png");
-        defaultAvatar = defaultAvatar.scaled(circleMaskImage.getWidth(), circleMaskImage.getHeight());
-        defaultAvatar = ((FontImage)defaultAvatar).toEncodedImage();
-        Object circleMask = circleMaskImage.createMask();
-        defaultAvatar = defaultAvatar.applyMask(circleMask);
-        avatar.setIcon(defaultAvatar);
-        
-        avatar.addActionListener(e -> {
-            if(Dialog.show("Camera or Gallery", "Would you like to use the camera or the gallery for the picture?", "Camera", "Gallery")) {
-                String pic = Capture.capturePhoto();
-                if(pic != null) {
-                    try {
-                        Image img = Image.createImage(pic).fill(circleMaskImage.getWidth(), circleMaskImage.getHeight());
-                        avatar.setIcon(img.applyMask(circleMask));
-                    } catch(IOException err) {
-                        ToastBar.showErrorMessage("An error occured while loading the image: " + err);
-                        Log.e(err);
-                    }
-                }
-            } else {
-                openGallery(ee -> {
-                    if(ee.getSource() != null) {
-                        try {
-                            Image img = Image.createImage((String)ee.getSource()).fill(circleMaskImage.getWidth(), circleMaskImage.getHeight());
-                            avatar.setIcon(img.applyMask(circleMask));
-                        } catch(IOException err) {
-                            ToastBar.showErrorMessage("An error occured while loading the image: " + err);
-                            Log.e(err);
-                        }
-                    }
-                }, GALLERY_IMAGE);
-            }
         });
-        
-        
-        
-        
-        
-        
-        
-        FormAjout.addAll(refProd,designation,qteStock,prix,avatar,save);
+        FormAjout.addAll(refProd,designation,qteStock,prix,upload,save,liste);
         add(FormAjout);
+        
          }
             
     

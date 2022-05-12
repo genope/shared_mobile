@@ -43,6 +43,9 @@ private String url="http://localhost:80/img/";
             
         setTitle("Liste des Destinations");
         setScrollableY(true);
+        getToolbar().addCommandToRightBar("back", null, ev->{
+            new homeShared().show();
+        });
       
      //   getToolbar().addCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, e->previous.showBack());
         //Button addDestination = new Button("Add Destination");

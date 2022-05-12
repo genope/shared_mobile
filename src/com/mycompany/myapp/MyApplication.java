@@ -65,21 +65,26 @@ public class MyApplication {
             return;
         }
         Form hi = new Form("Bienvenue chez shared");
-        hi.getToolbar().addCommandToSideMenu("Liste des offres", theme.getImage("round.png"), e->{
+        hi.setUIID("HOMEPAGE");
+        hi.getToolbar().addCommandToSideMenu("Liste des offres", null, e->{
             try {
                 new GetOffres().show();
             } catch (IOException ex) {
-                System.out.println(ex.getMessage());           }
+                System.out.println(ex.getMessage());
+            }
+
         });
-        hi.getToolbar().addCommandToSideMenu("Liste des produits", theme.getImage("round.png"), e->{
+        hi.getToolbar().addCommandToSideMenu("Liste des produits", null, e->{
             try {
                 new ProduitsListe().show();
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());           }
         });
-        hi.getToolbar().addCommandToSideMenu("Ajouter Produit", theme.getImage("round.png"), e->{
+        hi.getToolbar().addCommandToSideMenu("Ajouter Produit", null, e->{
+
             try {
                 new ProduitAjout().show();
+                
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
