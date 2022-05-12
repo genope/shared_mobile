@@ -46,7 +46,7 @@ private Resources theme;
 private EncodedImage enc;
 private Form current;
 private String url="http://localhost:80/img/";
-    public GetOffres(Form previous) throws IOException {
+    public GetOffres() throws IOException {
 
         
             
@@ -179,7 +179,7 @@ showBubble.addActionListener((e) -> {
                    if(deleteResult.get("response").equals("Offre deleted successfully")){
                   
                      Dialog.show("Deleted", "dest Deleted","OK","");
-                              new GetOffres(current).show();
+                              new GetOffres().show();
                          }
                         } catch(Exception err) {
                     Dialog.show("Error", "Error parsing result", "OK","");

@@ -37,7 +37,7 @@ import java.io.IOException;
 public class AddOffres extends Form{
     
    private Form current;
-     public AddOffres(Form previous) {
+     public AddOffres() {
         setTitle("Add Offre");
         setLayout(BoxLayout.y());
         
@@ -88,7 +88,7 @@ public class AddOffres extends Form{
                                 status.show();
                        
                         try {
-                            new GetOffres(current).show();
+                            new GetOffres().show();
                         } catch (IOException ex) {
                             System.out.println(ex.getMessage());
                         }
@@ -126,7 +126,6 @@ Location position = LocationManager.getLocationManager().getCurrentLocationSync(
          System.out.println(position);
     // Create a form and show it.
         addAll(nom,description,prix,ville,combo,btnValider,c);
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
                 
     }
      

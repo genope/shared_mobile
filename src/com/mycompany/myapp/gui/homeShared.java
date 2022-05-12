@@ -5,6 +5,7 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
 import com.codename1.ui.Component;
 import com.codename1.ui.Form;
@@ -18,7 +19,10 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
+import com.codename1.ui.EncodedImage;
+import com.codename1.ui.Image;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.URLImage;
 import com.mycompany.myapp.gui.GetOffres;
 import java.io.IOException;
 
@@ -29,7 +33,9 @@ import java.io.IOException;
 public class homeShared extends Form{
     Form current;
     private Resources theme;
-      public homeShared() {
+         private EncodedImage enc;
+
+      public homeShared() throws IOException {
          
         setTitle("Bienvenue chez shared");
         setScrollableY(true);
@@ -55,6 +61,16 @@ public class homeShared extends Form{
                System.out.println(ex.getMessage());
            }
         });
+        getToolbar().addCommandToSideMenu("Ajouter Offre", null, e->{
+            new AddOffres().show();
+        });
    
+        
+        enc = EncodedImage.create("/shared.png");
+                Image img=URLImage.createToStorage(enc,"http://localhost/img/shared.png","http://localhost/img/shared.png");
+           
+                ImageViewer imgv = new ImageViewer(img);
+        
+        add(imgv);
 }
 }
