@@ -86,39 +86,21 @@ public class ProduitAjout extends Form {
            private Resources theme;
          private EncodedImage enc;
          private String file;
-//         private void addimage(String name, String pathFrom) {
-//
-//        Path to1 = null;
-//        String m = null;
-//        String path = "C:\\xampp\\htdocs\\uploads\\images";
-//        JFileChooser chooser = new JFileChooser();
-//
-//        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-//                "JPG & PNG Images", "jpg", "jpeg", "PNG");
-//        chooser.setFileFilter(filter);
-//        int returnVal = chooser.showOpenDialog(null);
-//        if (returnVal == JFileChooser.APPROVE_OPTION) {
-//            m = chooser.getSelectedFile().getAbsolutePath();
-//
-//            file = chooser.getSelectedFile();
-//            String fileName = file.getName();
-//
-//            if (chooser.getSelectedFile() != null) {
-//
-//                Path from = Paths.get(chooser.getSelectedFile().toURI());
-//                to1 = Paths.get(path + "\\" + fileName);
-//                //           to2 = Paths.get("src\\"+path+"\\"+file.getName()+".png");
-//                CopyOption[] options = new CopyOption[]{
-//                    StandardCopyOption.REPLACE_EXISTING,
-//                    StandardCopyOption.COPY_ATTRIBUTES
-//                };
-//                Files.copy(from, to1, options);
-//                System.out.println("added");
-//                System.out.println(file);
-//            }
-//
-//        }
-//    }
+        public void notif (){
+            LocalNotification n = new LocalNotification();
+        n.setId("demo-notification");
+        n.setAlertBody("It's time to take a break and look at me");
+        n.setAlertTitle("Break Time!");
+        n.setAlertSound("/notification_sound_bells.mp3"); //file name must begin with notification_sound
+            System.out.println("NOTIF");
+
+        Display.getInstance().scheduleLocalNotification(
+                n,
+                System.currentTimeMillis() + 3 * 1000, // fire date/time
+                LocalNotification.REPEAT_MINUTE  // Whether to repeat and what frequency
+        );
+      
+        }
          public void sendMail(String str) {
         try {
             
@@ -181,19 +163,7 @@ public class ProduitAjout extends Form {
         getToolbar().addCommandToRightBar("back", null, ev->{
             new homeShared().show();
         });
-        LocalNotification n = new LocalNotification();
-        n.setId("demo-notification");
-        n.setAlertBody("It's time to take a break and look at me");
-        n.setAlertTitle("Break Time!");
-        n.setAlertSound("/notification_sound_bells.mp3"); //file name must begin with notification_sound
-
-
-        Display.getInstance().scheduleLocalNotification(
-                n,
-                System.currentTimeMillis() + 3 * 1000, // fire date/time
-                LocalNotification.REPEAT_MINUTE  // Whether to repeat and what frequency
-        );
-      
+        
         
         Container FormAjout =new Container(BoxLayout.yCenter());
         TextComponent refProd = new TextComponent().labelAndHint("refProd");
@@ -241,8 +211,14 @@ public class ProduitAjout extends Form {
               JSONParser jp = new JSONParser();
               Map<String, Object> result = jp.parseJSON(new InputStreamReader(input, "UTF-8"));
               String url = (String)result.get("url");
-               System.out.println(picture);
-          
+//               System.out.println(picture.toURI();
+//                String to1 = picture;
+//                //           to2 = Paths.get("src\\"+path+"\\"+file.getName()+".png");
+//                CopyOption[] options = new CopyOption[]{
+////                    StandardCopyOption.REPLACE_EXISTING,
+////                    StandardCopyOption.COPY_ATTRIBUTES
+//                };
+//                Files.copy(from, to1, options);
            }
         };
         request.setUrl(filestack);
@@ -270,7 +246,9 @@ public class ProduitAjout extends Form {
                         if( ProduitService.getInstance().addProd(prod))
                         {
                             sendMail(refProd.getText());
-                           Dialog.show("Success","Offre Ajouté","OK","");
+                            notif();
+//                           Dialog.show("Success","Offre Ajouté","OK","");
+                           
                         try {
                             new GetOffres().show();
                         } catch (IOException ex) {
