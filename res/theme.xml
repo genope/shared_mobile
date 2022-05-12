@@ -3,6 +3,8 @@
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
     <image name="191995.jpg"  />
     <image name="back-command.png" type="multi"  />
+    <image name="back.png"  />
+    <image name="BACKGROUND.jpg"  />
     <image name="border.png"  />
     <image name="Button.borderBottom_1.png" type="multi"  />
     <image name="Button.borderBottomL_1.png" type="multi"  />
@@ -56,6 +58,8 @@
     <image name="Menu.borderTopR_1.png" type="multi"  />
     <image name="menu.png" type="multi"  />
     <image name="of_menu.png" type="multi"  />
+    <image name="profile-background.jpg"  />
+    <image name="signup-background.jpg"  />
     <image name="sliderEmpty.png" type="multi"  />
     <image name="sliderEmptyLeft.png" type="multi"  />
     <image name="sliderEmptyRight.png" type="multi"  />
@@ -105,6 +109,8 @@
         <val key="@switchOffImage" value="switch_off.png" />
         <val key="@switchOnImage" value="switch_on.png" />
         <val key="@tabPlacementInt" value="0" />
+        <val key="Activate.bgImage" value="BACKGROUND.jpg" />
+        <val key="Activate.bgType" value="2" />
         <val key="Ajout.bgImage" value="191995.jpg" />
         <val key="Ajout.bgType" value="33" />
         <val key="Button.align" value="4" />
@@ -599,6 +605,10 @@
         <val key="SideNavigationPanel.margin" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.padding" value="0.0,0.0,0.0,0.0" />
         <val key="SideNavigationPanel.transparency" value="255" />
+        <val key="SignIn.bgImage" value="signup-background.jpg" />
+        <val key="SignIn.bgType" value="1" />
+        <val key="SignUp.bgImage" value="191995.jpg" />
+        <val key="SignUp.bgType" value="1" />
         <gradient key="Slider.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
         <val key="Slider.bgType" value="0" />
         <border key="Slider.border" type="imageH" i1="sliderEmptyLeft.png" i2="sliderEmptyRight.png" i3="sliderEmpty.png" />
