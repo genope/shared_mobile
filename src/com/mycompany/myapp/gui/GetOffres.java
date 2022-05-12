@@ -8,19 +8,26 @@ package com.mycompany.myapp.gui;
 import com.codename1.components.ImageViewer;
 import com.mycompany.myapp.services.serviceOffres;
 import com.codename1.components.SpanButton;
+import com.codename1.components.SpanLabel;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Button;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.URLImage;
+import com.codename1.ui.animations.BubbleTransition;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.util.Resources;
+import com.mycompany.myapp.MyApplication;
 import com.mycompany.myapp.enities.Offres;
 import java.io.ByteArrayInputStream;
 import java.io.InputStreamReader;
@@ -37,8 +44,9 @@ public class GetOffres extends Form {
      ArrayList offres=serviceOffres.getInstance().getAllOffres();
 private Resources theme;
 private EncodedImage enc;
-private String url="http://localhost:80/shared-web/public/uploads/";
-    public GetOffres() throws IOException {
+private Form current;
+private String url="http://localhost:80/img/";
+    public GetOffres(Form previous) throws IOException {
         
             
         setTitle("Liste des Destinations");
@@ -52,7 +60,7 @@ private String url="http://localhost:80/shared-web/public/uploads/";
 
          for (int i=0;i<offres.size();i++){
              
-                Container destinations=new Container(BoxLayout.y());
+                Container destinations=new Container(BoxLayout.yCenter());
                
                 destinations.getUnselectedStyle().setBorder(Border.createLineBorder(2));
             
@@ -73,7 +81,59 @@ private String url="http://localhost:80/shared-web/public/uploads/";
                 Label prix=new Label("Prix: "+offre.getPrix());
                 
                 
-                destinations.addAll(imgv,nom,description,adresse,prix);
+                
+                
+                
+                
+                Button showBubble = new Button("View Détails");
+showBubble.setName("BubbleButton");
+Style buttonStyle = showBubble.getAllStyles();
+buttonStyle.setBorder(Border.createEmpty());
+buttonStyle.setFgColor(0xffffff);
+buttonStyle.setBgPainter((g, rect) -> {
+    g.setColor(0xff);
+    int actualWidth = rect.getWidth();
+    int actualHeight = rect.getHeight();
+    int xPos, yPos;
+    int size;
+    if(actualWidth > actualHeight) {
+        yPos = rect.getY();
+        xPos = rect.getX() + (actualWidth - actualHeight) / 2;
+        size = actualHeight;
+    } else {
+        yPos = rect.getY() + (actualHeight - actualWidth) / 2;
+        xPos = rect.getX();
+        size = actualWidth;
+    }
+    g.setAntiAliased(true);
+    g.fillArc(xPos, yPos, size, size, 0, 360);
+});
+          
+
+showBubble.addActionListener((e) -> {
+    Dialog dlg = new Dialog("\n");
+    dlg.setLayout(new BorderLayout());
+    SpanLabel sl = new SpanLabel(offre.getDescription(), "");
+    sl.getTextUnselectedStyle().setFgColor(0xffffff);
+    dlg.add(BorderLayout.CENTER, sl);
+    dlg.setTransitionInAnimator(new BubbleTransition(500, "BubbleButton"));
+    dlg.setTransitionOutAnimator(new BubbleTransition(200, "BubbleButton"));
+    dlg.setDisposeWhenPointerOutOfBounds(true);
+    dlg.getTitleStyle().setFgColor(0xffffff);
+
+    Style dlgStyle = dlg.getDialogStyle();
+    dlgStyle.setBorder(Border.createEmpty());
+    dlgStyle.setBgColor(0xff);
+    dlgStyle.setBgTransparency(0xff);
+    dlg.showPacked(BorderLayout.NORTH, true);
+    
+    
+});
+
+
+
+
+                destinations.addAll(imgv,nom,description,adresse,prix,showBubble);
                 
              
           
@@ -112,10 +172,10 @@ private String url="http://localhost:80/shared-web/public/uploads/";
                    try {
                     Map<String,Object> deleteResult = new JSONParser().parseJSON(new InputStreamReader(new ByteArrayInputStream(cnxDelteDest.getResponseData()), "UTF-8"));
           
-                   if(deleteResult.get("response").equals("Information deleted successfully")){
+                   if(deleteResult.get("response").equals("Offre deleted successfully")){
                   
-                    Dialog.show("Deleted", "dest Deleted","OK","");
-                    new GetOffres().show();
+                     Dialog.show("Deleted", "dest Deleted","OK","");
+                              new GetOffres(current).show();
                          }
                         } catch(Exception err) {
                     Dialog.show("Error", "Error parsing result", "OK","");
@@ -134,7 +194,7 @@ private String url="http://localhost:80/shared-web/public/uploads/";
 
                 add(destinations);
  
-
+    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> new MyApplication().start());
 
          }
          
