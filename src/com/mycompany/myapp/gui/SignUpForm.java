@@ -39,7 +39,7 @@ import java.util.Vector;
 
 public class SignUpForm extends BaseForm {
 
-    public SignUpForm(Resources res) {
+    public SignUpForm() {
         super(new BorderLayout());
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
@@ -67,7 +67,7 @@ public class SignUpForm extends BaseForm {
         Button next = new Button("SignUp");
         Button signIn = new Button("Sign In");
         
-        signIn.addActionListener(e -> new SignInForm(res).show());
+        signIn.addActionListener(e -> new SignInForm().show());
         signIn.setUIID("Link");
         Label alreadHaveAnAccount = new Label("Already have an account?");
         
@@ -95,9 +95,9 @@ public class SignUpForm extends BaseForm {
         next.requestFocus();
         next.addActionListener((e) -> {
             
-            ServiceUtilisateur.getInstance().signup(username,cin, prenom,password ,email , confirmPassword, res);
+            ServiceUtilisateur.getInstance().signup(username,cin, prenom,password ,email , confirmPassword,null);
             Dialog.show("Success","account is saved","OK",null);
-            new SignInForm(res).show();
+            new SignInForm().show();
         });
     }
     

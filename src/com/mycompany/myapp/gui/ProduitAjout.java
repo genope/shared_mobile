@@ -143,7 +143,11 @@ public class ProduitAjout extends Form {
         setScrollableY(true);
         getToolbar().addCommandToSideMenu("Accueil",enc,
                 e->{
-                    new homeShared().show();
+            try {
+                new homeShared().show();
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
         });
         getToolbar().addCommandToSideMenu("Liste des offres",enc,
                 e->{
@@ -161,7 +165,11 @@ public class ProduitAjout extends Form {
         });
         
         getToolbar().addCommandToRightBar("back", null, ev->{
-            new homeShared().show();
+            try {
+                new homeShared().show();
+            } catch (IOException ex) {
+                ex.getMessage();
+            }
         });
         
         

@@ -19,7 +19,9 @@ import com.codename1.ui.Dialog;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
+import com.codename1.io.Storage;
 import com.codename1.ui.EncodedImage;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Image;
 import com.codename1.ui.Toolbar;
 import com.codename1.ui.URLImage;
@@ -64,6 +66,24 @@ public class homeShared extends Form{
         getToolbar().addCommandToSideMenu("Ajouter Offre", null, e->{
             new AddOffres().show();
         });
+        getToolbar().addCommandToSideMenu("Login", null, e->{
+            new SignInForm().show();
+        });
+        getToolbar().addCommandToSideMenu("Profile", null, e->{
+            new ProfileForm().show();
+            
+        });
+        getToolbar().addCommandToSideMenu("Logout", null, e->{
+            new SignInForm().show();
+        SessionManager.pref.clearAll();
+            Storage.getInstance().clearStorage();
+            Storage.getInstance().clearCache();
+            System.out.println(SessionManager.getEmail());   
+            
+        });
+        
+        
+        
    
         
         enc = EncodedImage.create("/shared.png");

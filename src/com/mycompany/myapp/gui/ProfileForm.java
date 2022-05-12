@@ -37,8 +37,8 @@ import com.codename1.ui.util.Resources;
 
 
 public class ProfileForm extends BaseForm {
-
-    public ProfileForm(Resources res) {
+private Resources theme;
+    public ProfileForm() {
         super("Newsfeed", BoxLayout.y());
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
@@ -46,12 +46,12 @@ public class ProfileForm extends BaseForm {
         setTitle("Profile");
         getContentPane().setScrollVisible(false);
         
-        super.addSideMenu(res);
+        super.addSideMenu(theme);
         
         tb.addSearchCommand(e -> {});
         
         
-        Image img = res.getImage("profile-background.jpg");
+        Image img = theme.getImage("profile-background.jpg");
         if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
@@ -59,8 +59,8 @@ public class ProfileForm extends BaseForm {
         sl.setUIID("BottomPad");
         sl.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
 
-        Label facebook = new Label("786 followers", res.getImage("facebook-logo.png"), "BottomPad");
-        Label twitter = new Label("486 followers", res.getImage("twitter-logo.png"), "BottomPad");
+        Label facebook = new Label("786 followers", theme.getImage("facebook-logo.png"), "BottomPad");
+        Label twitter = new Label("486 followers", theme.getImage("twitter-logo.png"), "BottomPad");
         facebook.setTextPosition(BOTTOM);
         twitter.setTextPosition(BOTTOM);
         
@@ -70,7 +70,7 @@ public class ProfileForm extends BaseForm {
                     GridLayout.encloseIn(3, 
                             facebook,
                             FlowLayout.encloseCenter(
-                                new Label(res.getImage("profile-pic.jpg"), "PictureWhiteBackgrond")),
+                                new Label(theme.getImage("profile-pic.jpg"), "PictureWhiteBackgrond")),
                             twitter
                     )
                 )
@@ -88,12 +88,12 @@ public class ProfileForm extends BaseForm {
         password.setUIID("TextFieldBlack");
         addStringValue("Password", password);
 
-        CheckBox cb1 = CheckBox.createToggle(res.getImage("on-off-off.png"));
+        CheckBox cb1 = CheckBox.createToggle(theme.getImage("on-off-off.png"));
         cb1.setUIID("Label");
-        cb1.setPressedIcon(res.getImage("on-off-on.png"));
-        CheckBox cb2 = CheckBox.createToggle(res.getImage("on-off-off.png"));
+        cb1.setPressedIcon(theme.getImage("on-off-on.png"));
+        CheckBox cb2 = CheckBox.createToggle(theme.getImage("on-off-off.png"));
         cb2.setUIID("Label");
-        cb2.setPressedIcon(res.getImage("on-off-on.png"));
+        cb2.setPressedIcon(theme.getImage("on-off-on.png"));
         
         addStringValue("Facebook", FlowLayout.encloseRightMiddle(cb1));
         addStringValue("Twitter", FlowLayout.encloseRightMiddle(cb2));

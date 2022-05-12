@@ -35,7 +35,7 @@ import com.mycompany.myapp.services.ServiceUtilisateur;
 
 public class SignInForm extends BaseForm {
 
-    public SignInForm(Resources res) {
+    public SignInForm() {
         super(new BorderLayout());
         
         if(!Display.getInstance().isTablet()) {
@@ -46,7 +46,7 @@ public class SignInForm extends BaseForm {
         getTitleArea().setUIID("Container");
         setUIID("SignUp");
         
-        add(BorderLayout.NORTH, new Label(res.getImage("Logo.png"), "LogoLabel"));
+//        add(BorderLayout.NORTH, new Label(res.getImage("Logo.png"), "LogoLabel"));
         
         TextField username = new TextField("", "email", 20, TextField.ANY);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
@@ -59,7 +59,7 @@ public class SignInForm extends BaseForm {
         Button  mp = new Button("oublier mot de passe?","CenterLabel");
         
         
-        signUp.addActionListener(e -> new SignUpForm(res).show());
+        signUp.addActionListener(e -> new SignUpForm().show());
         signUp.setUIID("Link");
         Label doneHaveAnAccount = new Label("Vous n'avez aucune compte?");
         
@@ -82,7 +82,7 @@ public class SignInForm extends BaseForm {
         
         signIn.addActionListener(e -> 
         {
-             ServiceUtilisateur.getInstance().signin(username, password, res);
+             ServiceUtilisateur.getInstance().signin(username, password, null);
 
            
         });
@@ -93,7 +93,7 @@ public class SignInForm extends BaseForm {
         
         mp.addActionListener((e) -> {
            
-           new ActivateForm(res).show();
+           new ActivateForm().show();
             
             
         });

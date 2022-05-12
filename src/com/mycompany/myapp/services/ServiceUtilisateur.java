@@ -124,7 +124,7 @@ public class ServiceUtilisateur {
                 System.out.println("current user"+SessionManager.getEmail()+","+SessionManager.getPassowrd());
           
                 if(user.size() >0 ) // l9a user
-                    new ProfileForm(rs).show();
+                    new ProfileForm().show();
                     System.out.println("welcome");
                     
                     }

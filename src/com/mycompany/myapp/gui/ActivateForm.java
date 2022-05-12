@@ -52,7 +52,7 @@ import javax.mail.internet.MimeMessage;
 public class ActivateForm extends BaseForm {
 
     TextField email;
-    public ActivateForm(Resources res) {
+    public ActivateForm() {
         super(new BorderLayout());
         Toolbar tb = new Toolbar(true);
         setToolbar(tb);
@@ -64,7 +64,7 @@ public class ActivateForm extends BaseForm {
         
         add(BorderLayout.NORTH, 
                 BoxLayout.encloseY(
-                        new Label(res.getImage("oublier.png"), "LogoLabel"),
+                        //new Label(res.getImage("oublier.png"), "LogoLabel"),
                         new Label("Awsome Thanks!", "LogoLabel")
                 )
         );
@@ -103,10 +103,10 @@ public class ActivateForm extends BaseForm {
             
             //houni bch nzido API SEND MAIL autrement bch n3ayto lel function ta3o mais 9bal njibo image oublier.png
             
-            sendMail(res);
+            sendMail();
             ipDialog.dispose();
             Dialog.show("Mot de passe","Nous avons envoyé le mot de passe a votre e-mail. Veuillez vérifier votre boite de réception",new Command("OK"));
-            new SignInForm(res).show();
+            new SignInForm().show();
             refreshTheme();
             
         });
@@ -117,7 +117,7 @@ public class ActivateForm extends BaseForm {
     
     //sendMail
     
-    public void sendMail(Resources res) {
+    public void sendMail() {
         try {
             
             Properties props = new Properties();
@@ -135,7 +135,7 @@ public class ActivateForm extends BaseForm {
             msg.setSubject("Application nom  : Confirmation du ");
             msg.setSentDate(new Date(System.currentTimeMillis()));
             
-           String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), res);//mp taw narj3lo
+           String mp = ServiceUtilisateur.getInstance().getPasswordByEmail(email.getText().toString(), null);//mp taw narj3lo
            String txt = "Bienvenue sur AppNom : Tapez ce mot de passe : "+mp+" dans le champs requis et appuiez sur confirmer";
            
            

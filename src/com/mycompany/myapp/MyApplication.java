@@ -59,7 +59,8 @@ public class MyApplication {
     }
     
     public void start() {
-                    new homeShared().show();
+        try {
+            new homeShared().show();
 //        if(current != null){
 //            current.show();
 //            return;
@@ -90,6 +91,9 @@ public class MyApplication {
 //            }
 //        });
 //        hi.show();
+        } catch (IOException ex) {
+            System.out.println("");
+        }
     
     }
 
