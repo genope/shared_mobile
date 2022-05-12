@@ -9,6 +9,7 @@ import com.codename1.components.ImageViewer;
 import com.mycompany.myapp.services.serviceOffres;
 import com.codename1.components.SpanButton;
 import com.codename1.components.SpanLabel;
+import com.codename1.components.ToastBar;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
@@ -46,7 +47,7 @@ private Resources theme;
 private EncodedImage enc;
 private Form current;
 private String url="http://localhost:80/img/";
-    public GetOffres(Form previous) throws IOException {
+    public GetOffres() throws IOException {
 
         
             
@@ -68,7 +69,7 @@ private String url="http://localhost:80/img/";
                
                 destinations.getUnselectedStyle().setBorder(Border.createLineBorder(2));
             
-                destinations.getUnselectedStyle().setMarginTop(50);
+                destinations.getUnselectedStyle().setPadding(50, 50, 250, 250);
                 //destinations.setSize(getPreferredSize());
                 Offres offre=(Offres)offres.get(i);
                 
@@ -80,8 +81,6 @@ private String url="http://localhost:80/img/";
                 ImageViewer imgv=new ImageViewer(img);
             
                 Label nom=new Label("Nom: "+offre.getNom());
-                Label description=new Label("Description: "+offre.getDescription());
-                Label adresse=new Label("Categorie: "+offre.getCateg());
                 Label prix=new Label("Prix: "+offre.getPrix());
                 
                 
@@ -89,7 +88,9 @@ private String url="http://localhost:80/img/";
                 
                 
                 
-                Button showBubble = new Button("View Détails");
+                
+                
+ Button showBubble = new Button("+");
 showBubble.setName("BubbleButton");
 Style buttonStyle = showBubble.getAllStyles();
 buttonStyle.setBorder(Border.createEmpty());
@@ -117,7 +118,7 @@ buttonStyle.setBgPainter((g, rect) -> {
 showBubble.addActionListener((e) -> {
     Dialog dlg = new Dialog("\n");
     dlg.setLayout(new BorderLayout());
-    SpanLabel sl = new SpanLabel(offre.getDescription(), "");
+    SpanLabel sl = new SpanLabel("Description :"+offre.getDescription()+"\nCatégorie :"+offre.getCateg(), "");
     sl.getTextUnselectedStyle().setFgColor(0xffffff);
     dlg.add(BorderLayout.CENTER, sl);
     dlg.setTransitionInAnimator(new BubbleTransition(500, "BubbleButton"));
@@ -137,29 +138,14 @@ showBubble.addActionListener((e) -> {
 
 
 
-                destinations.addAll(imgv,nom,description,adresse,prix,showBubble);
+                destinations.addAll(nom,imgv,prix,showBubble);
                 
              
           
-             Container modifydestContainer=new Container(BoxLayout.x());
-              SpanButton updateButton=new SpanButton("Update");
-                 updateButton.getTextAllStyles().setFgColor(0xF37217);
-                         updateButton.getAllStyles().setBorder(Border.createEmpty());
+             Container modifydestContainer=new Container(BoxLayout.xCenter());
+      
 
-//                 updateButton.addActionListener(updatedest->{
-//                    new InfiniteProgress().showInifiniteBlocking();
-//                    Offres desti=new Offres();
-//                    desti.setId(dest.getId());
-//                    desti.setNom(dest.getNom());
-//                    desti.setDecription(dest.getDecription());
-//                    desti.setAdresse(dest.getAdresse());
-//                    desti.setEmail(dest.getEmail());
-//                    desti.setNumTel(dest.getNumTel());
-//                    
-//                    new UpdateDestinationForm(desti).show();
-//                });
-                 
-                modifydestContainer.add(updateButton);
+               
                 String url=Statics.BASE_URL+"offres/deleteOffre/"+offre.getId_offre();
                 SpanButton deleteButton=new SpanButton("Delete");
                  deleteButton.getTextAllStyles().setFgColor(0xFB0000);
@@ -178,8 +164,12 @@ showBubble.addActionListener((e) -> {
           
                    if(deleteResult.get("response").equals("Offre deleted successfully")){
                   
-                     Dialog.show("Deleted", "dest Deleted","OK","");
-                              new GetOffres(current).show();
+                         ToastBar.Status status = ToastBar.getInstance().createStatus();
+                                status.setMessage("Offres Supprimé");
+                                status.setExpires(5000); 
+                                status.show();
+                                
+                              new GetOffres().show();
                          }
                         } catch(Exception err) {
                     Dialog.show("Error", "Error parsing result", "OK","");

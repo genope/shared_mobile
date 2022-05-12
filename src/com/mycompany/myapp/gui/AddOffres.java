@@ -37,7 +37,7 @@ import java.io.IOException;
 public class AddOffres extends Form{
     
    private Form current;
-     public AddOffres(Form previous) {
+     public AddOffres() {
         setTitle("Add Offre");
         setLayout(BoxLayout.y());
         
@@ -88,7 +88,7 @@ public class AddOffres extends Form{
                                 status.show();
                        
                         try {
-                            new GetOffres(current).show();
+                            new GetOffres().show();
                         } catch (IOException ex) {
                             System.out.println(ex.getMessage());
                         }
@@ -101,58 +101,15 @@ public class AddOffres extends Form{
                 
             }
         });
-       double[] values = new double[]{50, 14, 11, 10, 19};
 
-    // Set up the renderer
-    int[] colors = new int[]{ColorUtil.BLUE, ColorUtil.GREEN, ColorUtil.MAGENTA, ColorUtil.YELLOW, ColorUtil.CYAN};
-    DefaultRenderer renderer = buildCategoryRenderer(colors);
-    renderer.setZoomButtonsVisible(true);
-    renderer.setZoomEnabled(true);
-    renderer.setChartTitleTextSize(20);
-    renderer.setDisplayValues(true);
-    renderer.setShowLabels(true);
-    SimpleSeriesRenderer r = renderer.getSeriesRendererAt(0);
-    r.setGradientEnabled(true);
-    r.setGradientStart(0, ColorUtil.BLUE);
-    r.setGradientStop(0, ColorUtil.GREEN);
-    r.setHighlighted(true);
-
-    // Create the chart ... pass the values and renderer to the chart object.
-    PieChart chart = new PieChart(buildCategoryDataset("Project budget", values), renderer);
-
-    // Wrap the chart in a Component so we can add it to a form
-    ChartComponent c = new ChartComponent(chart);
-Location position = LocationManager.getLocationManager().getCurrentLocationSync();
-         System.out.println(position);
+         
     // Create a form and show it.
-        addAll(nom,description,prix,ville,combo,btnValider,c);
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        addAll(nom,description,prix,ville,combo,btnValider);
+    
                 
     }
      
-     private DefaultRenderer buildCategoryRenderer(int[] colors) {
-    DefaultRenderer renderer = new DefaultRenderer();
-    renderer.setLabelsTextSize(15);
-    renderer.setLegendTextSize(15);
-    renderer.setMargins(new int[]{20, 30, 15, 0});
-    for (int color : colors) {
-        SimpleSeriesRenderer r = new SimpleSeriesRenderer();
-        r.setColor(color);
-        renderer.addSeriesRenderer(r);
-    }
-    return renderer;
-}
-     protected CategorySeries buildCategoryDataset(String title, double[] values) {
-    CategorySeries series = new CategorySeries(title);
-    int k = 0;
-    for (double value : values) {
-        series.add("Catégorie "+k, value);
-        
-        
-    }
 
-    return series;
-}
     
     
 }
