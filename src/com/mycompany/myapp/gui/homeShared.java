@@ -26,6 +26,8 @@ import com.codename1.ui.URLImage;
 import com.mycompany.myapp.gui.GetOffres;
 import java.io.IOException;
 
+
+
 /**
  *
  * @author user
@@ -63,6 +65,26 @@ public class homeShared extends Form{
         });
         getToolbar().addCommandToSideMenu("Ajouter Offre", null, e->{
             new AddOffres().show();
+        });
+         getToolbar().addCommandToSideMenu("Liste Publicaitons", null, e->{
+            try {
+                new ListTasksForm().show();
+            } catch (IOException ex) {
+                
+            }
+        });
+         getToolbar().addCommandToSideMenu("Ajout Publicaiton", null, e->{
+            new AddTaskForm().show();
+        });
+         getToolbar().addCommandToSideMenu("Ajouter réclamation", null, e->{
+            new AddRecForm().show();
+        });
+         getToolbar().addCommandToSideMenu("Liste réclamations", null, e->{
+            try {
+                new ListRec().show();
+            } catch (IOException ex) {
+               
+            }
         });
    
         

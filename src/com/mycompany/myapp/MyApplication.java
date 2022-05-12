@@ -2,28 +2,13 @@ package com.mycompany.myapp;
 
 
 import static com.codename1.ui.CN.*;
-import com.codename1.ui.Form;
-import com.codename1.ui.Dialog;
-import com.codename1.ui.plaf.UIManager;
-import com.codename1.ui.util.Resources;
-import com.codename1.io.Log;
-import com.codename1.ui.Toolbar;
-import com.mycompany.myapp.gui.GetOffres;
 import com.mycompany.myapp.gui.homeShared;
-import static com.codename1.ui.CN.*;
 import com.codename1.ui.Form;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.codename1.io.Log;
-import com.codename1.ui.Component;
-import com.codename1.ui.Label;
 import com.codename1.ui.Toolbar;
-import com.codename1.ui.layouts.FlowLayout;
-import com.mycompany.myapp.gui.GetOffres;
-import com.mycompany.myapp.gui.Input;
-import com.mycompany.myapp.gui.ProduitAjout;
-import com.mycompany.myapp.gui.ProduitsListe;
 import java.io.IOException;
 
 /**
@@ -59,7 +44,8 @@ public class MyApplication {
     }
     
     public void start() {
-                    new homeShared().show();
+        try {
+            new homeShared().show();
 //        if(current != null){
 //            current.show();
 //            return;
@@ -90,6 +76,9 @@ public class MyApplication {
 //            }
 //        });
 //        hi.show();
+        } catch (IOException ex) {
+           
+        }
     
     }
 

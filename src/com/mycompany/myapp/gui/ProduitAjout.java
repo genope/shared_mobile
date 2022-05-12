@@ -6,66 +6,34 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.capture.Capture;
-import com.codename1.components.ImageViewer;
-import com.codename1.components.InfiniteProgress;
-import com.codename1.components.SpanButton;
-import com.codename1.components.ToastBar;
-import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
-import com.codename1.io.Log;
 import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkManager;
-import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.notifications.LocalNotification;
-import com.codename1.ui.Button;
 import com.codename1.ui.ButtonGroup;
-import static com.codename1.ui.CN.SOUTH;
-import static com.codename1.ui.CN.openGallery;
-import static com.codename1.ui.CN1Constants.GALLERY_IMAGE;
-import com.codename1.ui.Container;
-import com.codename1.ui.Dialog;
-import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
-import com.codename1.ui.Form;
 import com.codename1.ui.Image;
-import com.codename1.ui.Label;
 import com.codename1.ui.RadioButton;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextComponent;
-import com.codename1.ui.URLImage;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.plaf.Border;
-import com.codename1.ui.util.Resources;
-import com.codename1.util.Callback;
 import com.mycompany.myapp.enities.Produits;
 import com.mycompany.myapp.services.ProduitService;
-import com.mycompany.myapp.utils.Statics;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Date;
 import java.util.Map;
 
-import com.codename1.components.FloatingHint;
-import com.codename1.components.InfiniteProgress;
-import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
-import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
-import com.codename1.ui.Label;
-import com.codename1.ui.TextField;
-import com.codename1.ui.Toolbar;
-import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
-import com.codename1.ui.layouts.FlowLayout;
-import com.codename1.ui.util.Resources;import com.sun.mail.smtp.SMTPTransport;
+import com.codename1.ui.util.Resources;import 
+com.sun.mail.smtp.SMTPTransport;
 //import java.nio.file.CopyOption;
 //import java.nio.file.Files;
 //import java.nio.file.Path;
@@ -75,7 +43,6 @@ import java.util.Date;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.Session;
-import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 /**
@@ -143,7 +110,11 @@ public class ProduitAjout extends Form {
         setScrollableY(true);
         getToolbar().addCommandToSideMenu("Accueil",enc,
                 e->{
-                    new homeShared().show();
+            try {
+                new homeShared().show();
+            } catch (IOException ex) {
+             
+            }
         });
         getToolbar().addCommandToSideMenu("Liste des offres",enc,
                 e->{
@@ -161,7 +132,11 @@ public class ProduitAjout extends Form {
         });
         
         getToolbar().addCommandToRightBar("back", null, ev->{
-            new homeShared().show();
+            try {
+                new homeShared().show();
+            } catch (IOException ex) {
+         
+            }
         });
         
         

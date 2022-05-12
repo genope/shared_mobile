@@ -24,17 +24,14 @@ import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
 import com.codename1.ui.util.Resources;
-import com.mycompany.myapp.enities.Offres;
 import com.mycompany.myapp.enities.Produits;
 import com.mycompany.myapp.services.ProduitService;
-import com.mycompany.myapp.services.serviceOffres;
 import com.mycompany.myapp.utils.Statics;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Map;
-import javafx.scene.image.ImageView;
 
 /**
  *
@@ -63,7 +60,11 @@ public class ProduitsListe extends Form{
                System.out.println(ex.getMessage());           }
         });
         getToolbar().addCommandToRightBar("back", null, ev->{
-             new homeShared().showBack();
+            try {
+                new homeShared().showBack();
+            } catch (IOException ex) {
+           
+            }
         });
         getToolbar().addCommandToSideMenu("Liste des produits",enc,
                 e->{
