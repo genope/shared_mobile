@@ -50,6 +50,34 @@ import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.Map;
 
+import com.codename1.components.FloatingHint;
+import com.codename1.components.InfiniteProgress;
+import com.codename1.components.SpanLabel;
+import com.codename1.ui.Button;
+import com.codename1.ui.Command;
+import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
+import com.codename1.ui.Form;
+import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
+import com.codename1.ui.Toolbar;
+import com.codename1.ui.layouts.BorderLayout;
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;import com.sun.mail.smtp.SMTPTransport;
+//import java.nio.file.CopyOption;
+//import java.nio.file.Files;
+//import java.nio.file.Path;
+//import java.nio.file.Paths;
+//import java.nio.file.StandardCopyOption;
+import java.util.Date;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 /**
  *
  * @author yeekt
@@ -58,6 +86,73 @@ public class ProduitAjout extends Form {
            private Resources theme;
          private EncodedImage enc;
          private String file;
+//         private void addimage(String name, String pathFrom) {
+//
+//        Path to1 = null;
+//        String m = null;
+//        String path = "C:\\xampp\\htdocs\\uploads\\images";
+//        JFileChooser chooser = new JFileChooser();
+//
+//        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+//                "JPG & PNG Images", "jpg", "jpeg", "PNG");
+//        chooser.setFileFilter(filter);
+//        int returnVal = chooser.showOpenDialog(null);
+//        if (returnVal == JFileChooser.APPROVE_OPTION) {
+//            m = chooser.getSelectedFile().getAbsolutePath();
+//
+//            file = chooser.getSelectedFile();
+//            String fileName = file.getName();
+//
+//            if (chooser.getSelectedFile() != null) {
+//
+//                Path from = Paths.get(chooser.getSelectedFile().toURI());
+//                to1 = Paths.get(path + "\\" + fileName);
+//                //           to2 = Paths.get("src\\"+path+"\\"+file.getName()+".png");
+//                CopyOption[] options = new CopyOption[]{
+//                    StandardCopyOption.REPLACE_EXISTING,
+//                    StandardCopyOption.COPY_ATTRIBUTES
+//                };
+//                Files.copy(from, to1, options);
+//                System.out.println("added");
+//                System.out.println(file);
+//            }
+//
+//        }
+//    }
+         public void sendMail(String str) {
+        try {
+            
+            Properties props = new Properties();
+                props.put("mail.transport.protocol", "smtp"); //SMTP protocol
+		props.put("mail.smtps.host", "smtp.gmail.com"); //SMTP Host
+		props.put("mail.smtps.auth", "true"); //enable authentication
+             
+            Session session = Session.getInstance(props,null); 
+            
+            
+            MimeMessage msg = new MimeMessage(session);
+            
+            msg.setRecipients(Message.RecipientType.TO,"TNSharedInc@gmail.com");
+            msg.setSubject("Application nom  : Confirmation du ");
+            msg.setSentDate(new Date(System.currentTimeMillis()));
+            
+           String txt = "Produit "+str +" Ajouté";
+           
+           
+           msg.setText(txt);
+           
+          SMTPTransport  st = (SMTPTransport)session.getTransport("smtps") ;
+            
+          st.connect("smtp.gmail.com",465,"TNSharedInc@gmail.com","shared2022");
+           
+          st.sendMessage(msg, msg.getAllRecipients());
+            
+          System.out.println("server response : "+st.getLastServerResponse());
+          
+        }catch(Exception e ) {
+            e.printStackTrace();
+        }
+    }
     public ProduitAjout() throws IOException {
         
             
@@ -132,14 +227,14 @@ public class ProduitAjout extends Form {
         
         
         Button upload = new Button("Upload Image Produit");
-        upload.setUIID("InputAvatar");
+        upload.setUIID("fileC");
         
         upload.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
   
-              String picture = Capture.capturePhoto(1024, -1);
-    if(picture!=null){
+        String picture = Capture.capturePhoto(1024, -1);
+        if(picture!=null){
         String filestack = "https://www.filestackapi.com/api/store/S3?key=MY_KEY&filename=myPicture.jpg";
         MultipartRequest request = new MultipartRequest() {
            protected void readResponse(InputStream input) throws IOException  {
@@ -162,6 +257,7 @@ public class ProduitAjout extends Form {
                                         
             }
         });
+        
               save.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -173,6 +269,7 @@ public class ProduitAjout extends Form {
                     
                         if( ProduitService.getInstance().addProd(prod))
                         {
+                            sendMail(refProd.getText());
                            Dialog.show("Success","Offre Ajouté","OK","");
                         try {
                             new GetOffres().show();

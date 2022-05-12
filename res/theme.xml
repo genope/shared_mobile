@@ -44,6 +44,7 @@
     <image name="Dialog.borderTop_1.png" type="multi"  />
     <image name="Dialog.borderTopL_1.png" type="multi"  />
     <image name="Dialog.borderTopR_1.png" type="multi"  />
+    <image name="FileChooser.png"  />
     <image name="Menu.borderBottom_1.png" type="multi"  />
     <image name="Menu.borderBottomL_1.png" type="multi"  />
     <image name="Menu.borderBottomR_1.png" type="multi"  />
@@ -745,6 +746,8 @@
         <val key="bgColor" value="ffffff" />
         <border key="border" type="empty" />
         <val key="fgColor" value="0" />
+        <val key="fileC.bgImage" value="FileChooser.png" />
+        <val key="fileC.bgType" value="33" />
         <font key="font" type="ttf" face="0" style="0" size="0" name="native:MainRegular" family="native:MainRegular" sizeSettings="3" actualSize="3.0" />
         <border key="press#border" type="empty" />
         <border key="sel#border" type="empty" />
