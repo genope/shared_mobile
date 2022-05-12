@@ -10,12 +10,16 @@ import com.codename1.components.SpanButton;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Button;
+import com.codename1.ui.ButtonGroup;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.RadioButton;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.Border;
@@ -49,6 +53,8 @@ public class ProduitsListe extends Form{
             
         setTitle("Liste des Produits");
         setScrollableY(true);
+        setUIID("Listp");
+        
         getToolbar().addCommandToSideMenu("Liste des offres",enc,
                 e->{
            try {
@@ -57,9 +63,23 @@ public class ProduitsListe extends Form{
                System.out.println(ex.getMessage());           }
         });
         getToolbar().addCommandToRightBar("back", null, ev->{
-             this.showBack();
+             new homeShared().showBack();
         });
-  
+        getToolbar().addCommandToSideMenu("Liste des produits",enc,
+                e->{
+           try {
+               new ProduitsListe().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
+        });
+           Button Share=new Button("Share");
+        ButtonGroup barGroup = new ButtonGroup();
+
+        RadioButton liste = RadioButton.createToggle("Partager", barGroup);
+        liste.setUIID("SelectBar");
+        liste.addPointerPressedListener(l->{
+        Display.getInstance().execute("https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u=http%3A%2F%2F127.0.0.1%3A8000%2Fequipe_mobile&display=popup&ref=plugin&src=share_button");
+        });
          for (int i=0;i<ListProd.size();i++){
                 Container destinations=new Container(BoxLayout.y());
                
