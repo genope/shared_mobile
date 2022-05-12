@@ -63,7 +63,11 @@ public class ProduitsListe extends Form{
                System.out.println(ex.getMessage());           }
         });
         getToolbar().addCommandToRightBar("back", null, ev->{
-             new homeShared().showBack();
+            try {
+                new homeShared().showBack();
+            } catch (IOException ex) {
+                System.out.println("");
+                }
         });
         getToolbar().addCommandToSideMenu("Liste des produits",enc,
                 e->{
