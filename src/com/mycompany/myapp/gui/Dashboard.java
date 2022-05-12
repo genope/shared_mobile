@@ -11,11 +11,13 @@ import com.codename1.charts.renderers.DefaultRenderer;
 import com.codename1.charts.renderers.SimpleSeriesRenderer;
 import com.codename1.charts.util.ColorUtil;
 import com.codename1.charts.views.PieChart;
+import com.codename1.ui.EncodedImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.List;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.enities.Offres;
 import com.mycompany.myapp.services.serviceOffres;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -27,10 +29,26 @@ public class Dashboard extends Form{
   ArrayList offres=serviceOffres.getInstance().getAllOffres();
   ArrayList<Offres> jj=serviceOffres.getInstance().getAllOffres();
        ArrayList of = new ArrayList();
-         
+         private EncodedImage enc;
     
      public Dashboard() {
-        
+         getToolbar().addCommandToSideMenu("Liste des offres",enc,
+                e->{
+           try {
+               new GetOffres().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
+        });
+        getToolbar().addCommandToRightBar("back", null, ev->{
+             new homeShared().showBack();
+        });
+        getToolbar().addCommandToSideMenu("Liste des produits",enc,
+                e->{
+           try {
+               new ProduitsListe().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
+        });
          for (int i=0;i<offres.size();i++){
             Offres offre=(Offres)offres.get(i);
             of.add(offre.getCateg());

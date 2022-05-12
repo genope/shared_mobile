@@ -53,8 +53,22 @@ private String url="http://localhost:80/img/";
             
         setTitle("Liste des Destinations");
         setScrollableY(true);
+      getToolbar().addCommandToSideMenu("Liste des offres",enc,
+                e->{
+           try {
+               new GetOffres().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
+        });
         getToolbar().addCommandToRightBar("back", null, ev->{
-            new homeShared().show();
+             new homeShared().showBack();
+        });
+        getToolbar().addCommandToSideMenu("Liste des produits",enc,
+                e->{
+           try {
+               new ProduitsListe().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
         });
       
      //   getToolbar().addCommandToLeftBar("",FontImage.MATERIAL_ARROW_BACK, e->previous.showBack());

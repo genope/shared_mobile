@@ -62,7 +62,7 @@ public class MyApplication {
     }
     
     public void start() {
-               new Dashboard().show();
+               new homeShared().show();
 //        if(current != null){
 //            current.show();
 //            return;

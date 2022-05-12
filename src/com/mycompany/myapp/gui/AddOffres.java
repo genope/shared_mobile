@@ -18,6 +18,7 @@ import com.codename1.ui.Button;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
@@ -35,9 +36,27 @@ import java.io.IOException;
  * @author user
  */
 public class AddOffres extends Form{
-    
+           private EncodedImage enc;
    private Form current;
      public AddOffres() {
+         getToolbar().addCommandToSideMenu("Liste des offres",enc,
+                e->{
+           try {
+               new GetOffres().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
+        });
+        getToolbar().addCommandToRightBar("back", null, ev->{
+             new homeShared().showBack();
+        });
+        getToolbar().addCommandToSideMenu("Liste des produits",enc,
+                e->{
+           try {
+               new ProduitsListe().show();
+           } catch (IOException ex) {
+               System.out.println(ex.getMessage());           }
+        });
+       
         setTitle("Add Offre");
         setLayout(BoxLayout.y());
         
