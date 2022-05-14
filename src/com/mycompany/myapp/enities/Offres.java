@@ -35,6 +35,11 @@ public class Offres {
         this.prix = prix;
     }
 
+    public Offres(int id_offre, String nom) {
+        this.id_offre = id_offre;
+        this.nom = nom;
+    }
+
     public String getImage() {
         return image;
     }

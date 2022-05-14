@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f733604a-0305-4281-8bb7-6f95730533e4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/ant.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/enities/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/enities/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/back/event/ManageEventsBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/back/event/ShowEventsBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/back/reservation/ManageReservationsBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/back/reservation/ShowReservationsBack.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/front/event/ShowEventsFront.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/front/reservation/ManageReservationsFront.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/front/reservation/ShowReservationsFront.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/services/EventService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/services/OffreService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/services/ReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/services/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/utils/AlertUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/utils/DateUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaSE.jar" beforeDir="false" afterPath="$PROJECT_DIR$/JavaSE.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Versions.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Versions.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/built-jar.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/MyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/MyApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/enities/Offres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/enities/Offres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/enities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/enities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ActivateForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ActivateForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/AddOffres$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/AddOffres$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/AddOffres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/AddOffres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/BaseForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/BaseForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/GetOffres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/GetOffres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/Input.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/Input.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout$1$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout$1$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitAjout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitsListe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProduitsListe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProfileForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/ProfileForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/SignInForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/SignInForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/homeShared.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/gui/homeShared.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/ProduitService$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/ProduitService$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/ProduitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/ProduitService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/ServiceUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/ServiceUtilisateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/serviceOffres$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/serviceOffres$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/serviceOffres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/services/serviceOffres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/utils/Statics.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/com/mycompany/myapp/utils/Statics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/MyApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/MyApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/enities/Offres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/enities/Offres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/enities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/enities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ActivateForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ActivateForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/BaseForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/BaseForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/GetOffres.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/GetOffres.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitAjout$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitAjout$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitAjout$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitAjout$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitAjout.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitAjout.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitsListe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProduitsListe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProfileForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/ProfileForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/SignInForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/SignInForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/homeShared.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/gui/homeShared.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/services/ServiceUtilisateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/services/ServiceUtilisateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/utils/Statics.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/com/mycompany/myapp/utils/Statics.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/theme.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/theme.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/enities/Offres.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/enities/Offres.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/enities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/enities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ActivateForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ActivateForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ProduitAjout.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ProduitAjout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ProduitsListe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/ProduitsListe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/homeShared.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/gui/homeShared.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/mycompany/myapp/utils/Statics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/mycompany/myapp/utils/Statics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.res" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.res" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="298Qag4mD3n2O24V7klgWBuUdgc" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/JavaSE.jar" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15625" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Run in Device Simulator" type="#com.codename1.plugin.intellij.run.CodenameOneConfigurationType" factoryName="Codename One">
+      <setting name="mainClass" value="com.mycompany.myapp.MyApplication" />
+      <setting name="vmparams" value="" />
+      <setting name="workDir" value="" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f733604a-0305-4281-8bb7-6f95730533e4" name="Changes" comment="" />
+      <created>1652492302668</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652492302668</updated>
+      <workItem from="1652492308042" duration="179000" />
+      <workItem from="1652492693858" duration="1531000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

@@ -755,6 +755,11 @@
         <val key="ToastBarMessage.padding" value="2.0,2.0,1.0,1.0" />
         <val key="bgColor" value="ffffff" />
         <border key="border" type="empty" />
+        <val key="buttonWhiteCenter.align" value="4" />
+        <border key="buttonWhiteCenter.border" type="line" millimeters="false" thickness="1.0" color="0" />
+        <val key="buttonWhiteCenter.sel#align" value="4" />
+        <border key="containerRounded.border" type="line" millimeters="false" thickness="1.0" color="0" />
+        <val key="containerRounded.margin" value="30.0,30.0,30.0,30.0" />
         <val key="fgColor" value="0" />
         <val key="fileC.bgImage" value="FileChooser.png" />
         <val key="fileC.bgType" value="33" />

@@ -72,5 +72,11 @@ public class User {
         this.password = password;
     }
 
+    public User(int cin, String nom) {
+        this.cin = cin;
+        this.nom = nom;
+    }
 
+    public User() {
+    }
 }
